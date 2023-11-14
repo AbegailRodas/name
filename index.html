@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: white;
+        }
+
+        .calculator {
+            width: 455px;
+            margin: 0 auto;
+            background: linear-gradient(to right, grey , burlywood );
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 2px 2px 5px ;stroke: aquamarine;
+            padding: 20px;
+        }
+
+        input[type="text"] {
+            width: 98%;
+            height: 90px;
+            font-size: 50px;
+            text-align: right;
+            margin-bottom: 10px;
+        }
+
+        .num {
+            width: 100px;
+            height: 100px;
+            font-size: 30px;
+            margin: 5px;
+            cursor: pointer;
+            box-shadow: 2px 2px 5px grey;
+            border-radius: 20px;
+            color: burlywood;
+            background-color: lightslategray;
+           
+        }
+
+        .btn:hover {
+            background-color: dimgray;
+        }
+
+        #result {
+            font-size: 24px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+<div class="calculator" >
+  <input type= "text" id = "result" disabled>
+  <div>
+  <button class="num" onclick="appendNumber(9)" value="9" >9</button>
+  <button class="num" onclick="appendNumber(8)" value="8">8</button>
+  <button class="num" onclick="appendNumber(7)" value="7">7</button>
+  <button class="num" onclick="subtract()" value="-">-</button>
+ 
+  </div>
+
+  <div>
+  <button class="num" onclick="appendNumber(6)" value="6">6</button>
+  <button class="num" onclick="appendNumber(5)" value="6">5</button>
+  <button class="num" onclick="appendNumber(4)" value="4">4</button>
+  <button class="num" onclick="add()"value="+" >+</button>
+ </div>
+
+ <div>
+  <button class="num" onclick="appendNumber(3)" value="3">3</button>
+  <button class="num" onclick="appendNumber(2)" value="2">2</button>
+  <button class="num" onclick="appendNumber(1)" value="1">1</button>
+  <button class="num" onclick="divide()"value="/" >/</button>
+ </div>
+
+ <div>
+  <button class="num" onclick="clearInput()"value="1" >C</button>
+  <button class="num" onclick="appendNumber(0)"value="0" >0</button>
+  <button class="num" onclick="multiply()" value="*">*</button>
+  <button class="num" onclick="equal()" value="=">=</button>
+ </div>
+</div>
+<script>
+    let currentInput = '';
+    let currentOperator = '';
+    function clearInput() {
+        currentOperator = '';
+        currentInput = '';
+        document.getElementById('result').value = '';
+    }
+    function appendNumber(number) {
+        currentInput += number;
+        document.getElementById('result').value = currentInput;
+    }
+    function add() {
+        currentOperator = "+";
+        currentInput += currentOperator;
+        document.getElementsById('result').value = currentInput;
+    }
+    function subtract() {
+        currentOperator = "-";
+        currentInput += currentOperator;
+        document.getElementsById('result').value = currentInput;
+    }
+    function multiply() {
+        currentOperator = "*";
+        currentInput += currentOperator;
+        document.getElementsById('result').value = currentInput;
+    }
+    function divide() {
+        currentOperator = "/";
+        currentInput += currentOperator;
+        document.getElementsById('result').value = currentInput;
+    }
+    function calculate() {
+        const result = eval(currentInput);
+        document.getElementById('result').value = result;
+        currentInput.toString();
+        currentOperator = '';
+    }
+</script>
+</body>
+</html>
